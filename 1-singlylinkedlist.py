@@ -11,7 +11,7 @@ class LinkedList:
         self.tail = newNode
         self.length = 1
 
-    def push(self,data):
+    def push(self, data):
         newNode = Node(data)
         if self.head is None:
             self.head = newNode
@@ -34,7 +34,7 @@ class LinkedList:
         self.tail = pre
         self.tail.next = None
         self.length -= 1
-        if self.length == 0:
+        if self.length == 1:
             self.head = None
             self.tail = None
         return current
@@ -42,15 +42,15 @@ class LinkedList:
     def shift(self):
         if self.head is None:
             return None
-        temp = self.head
+        current = self.head
         self.head = self.head.next
         self.length -= 1
-        if self.length == 0:
+        if self.length == 1:
             self.tail = None
-        temp.next = None
-        return temp
+        current.next = None
+        return current
     
-    def unshift(self,data):
+    def unshift(self, data):
         newNode = Node(data)
         if self.head is None:
             self.head = newNode
@@ -64,15 +64,16 @@ class LinkedList:
     def get(self,index):
         if index < 0 or index >= self.length:
             return None
-        temp = self.head
+        current = self.head
         for i in range(index):
-            temp = temp.next
-        return temp
+            current = current.next
+        return current
+        # print(current.data)
     
     def set(self,index,data):
-        temp = self.get(index)
-        if temp:
-            temp.data = data
+        current = self.get(index)
+        if current:
+            current.data = data
             return True
         return False
     
@@ -84,9 +85,9 @@ class LinkedList:
         if index == 0:
             return self.unshift(data)
         newNode = Node(data)
-        temp = self.get(index-1)
-        newNode.next = temp.next
-        temp.next = newNode
+        current = self.get(index-1)
+        newNode.next = current.next
+        current.next = newNode
         self.length += 1
         return True
     
@@ -97,35 +98,36 @@ class LinkedList:
             return self.pop()
         if index == 0:
             return self.shift()
-        temp = self.get(index-1)
-        temp.next = temp.next.next
+        current = self.get(index-1)
+        current.next = current.next.next
         self.length -= 1
         return True
     
     def reverse(self):
         if self.head is None:
             return None
-        temp = self.head
+        current = self.head
         self.head = self.tail
-        self.tail = temp
+        self.tail = current
         pre = None
         next = None
         for i in range(self.length):
-            next = temp.next
-            temp.next = pre
-            pre = temp
-            temp = next
+            next = current.next
+            current.next = pre
+            pre = current
+            current = next
         return self
+    
     
     def __repr__(self):
         if self.head is None:
             print("Linked list is empty")
             return
-        temp = self.head
+        current = self.head
         llstr = ''
-        while temp:
-            llstr += str(temp.data) + " ---> "
-            temp = temp.next
+        while current:
+            llstr += str(current.data) + " ---> "
+            current = current.next
         return llstr            
         
 
@@ -144,5 +146,9 @@ newlist1.push("Tues")
 newlist1.push("Wed")
 newlist1.push("Thur")
 newlist1.push("Fri")
-newlist1.pop()
+# newlist1.unshift("Sun")
+# newlist1.shift()
+# newlist1.pop()
+newlist1.insert(1, "Fri")
 print(newlist1)
+# newlist1.get(1)
