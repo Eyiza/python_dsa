@@ -5,11 +5,14 @@ class Node:
 
 
 class LinkedList:
-    def __init__(self,value):
+    def __init__(self, value = None):
         newNode = Node(value)
         self.head = newNode
         self.tail = newNode
-        self.length = 1
+        if value:
+            self.length = 1
+        else:
+            self.length = 0
 
     def push(self, data):
         newNode = Node(data)
@@ -67,8 +70,9 @@ class LinkedList:
         current = self.head
         for i in range(index):
             current = current.next
-        return current
         # print(current.data)
+        return current
+        
     
     def set(self,index,data):
         current = self.get(index)
@@ -110,7 +114,7 @@ class LinkedList:
         self.head = self.tail
         self.tail = current
         pre = None
-        next = None
+        # next = None
         for i in range(self.length):
             next = current.next
             current.next = pre
@@ -131,24 +135,18 @@ class LinkedList:
         return llstr            
         
 
-# newlist = LinkedList()
-# e1 = Node(1)
-# e2 = Node(2)
-# e3 = Node(3)
-# newlist.head = e1
-# newlist.tail = e3
-# e1.next = e2
-# print(newlist.tail.data)
-
-
 newlist1 = LinkedList("Mon")
 newlist1.push("Tues")
 newlist1.push("Wed")
 newlist1.push("Thur")
 newlist1.push("Fri")
-# newlist1.unshift("Sun")
-# newlist1.shift()
-# newlist1.pop()
-newlist1.insert(1, "Fri")
 print(newlist1)
+# newlist1.pop()
+# newlist1.shift()
+# newlist1.unshift("Sun")
 # newlist1.get(1)
+# newlist1.set(2, "Wednesday")
+# newlist1.insert(1, "Fri")
+# newlist1.remove(2)
+# newlist1.reverse()
+# print(newlist1)
