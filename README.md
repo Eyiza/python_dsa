@@ -6,6 +6,7 @@ This repository contains implementations of various data structures and algorith
 - Linked Lists
 - Stack
 - Queue
+- Recursion
 - Tree
 - Graph
 - Hash Tables
