@@ -20,12 +20,9 @@ class DoublyLinkedList:
             self.head = newNode
             self.tail = newNode
             return
-        current = self.head
-        while current.next:
-            current = current.next
-        current.next = newNode
+        self.tail.next = newNode
+        newNode.prev = self.tail
         self.tail = newNode
-        newNode.prev = current
         self.length += 1
         # print(newNode.prev.value)
         return self
@@ -34,21 +31,19 @@ class DoublyLinkedList:
         if self.head is None:
             print("Linked list is empty")
             return None
-        current = self.tail.prev
-        current.next = None
-        self.tail = current
+        self.tail.prev.next = None
+        self.tail = self.tail.prev
         self.length -= 1
     
     def shift(self):
         if self.head is None:
+            print("Linked list is empty")
             return None
-        # current = self.head
         self.head = self.head.next
         self.head.prev = None
         self.length -= 1
         if self.length == 1:
             self.tail = None
-        # current.next = None
         return self
 
     def unshift(self, value): # Or prepend
@@ -131,6 +126,11 @@ class DoublyLinkedList:
                 current.next = current.next.next
                 current.next.prev = current
                 self.length -= 1
+            # OR
+            # if current.value == key:
+            #     current.prev.next = current.next
+            #     current.next.prev = current.prev
+            #     self.length -= 1
             else:
                 current = current.next
         return self
@@ -163,7 +163,7 @@ newlist1.push("Wed")
 newlist1.push("Thur")
 newlist1.push("Fri")
 print(str(newlist1))
-# newlist1.pop()
+newlist1.pop()
 # newlist1.shift()
 # newlist1.unshift("Sun")
 # newlist1.get(2)
@@ -172,12 +172,14 @@ print(str(newlist1))
 # newlist1.remove(2)
 # newlist1.delete_node("Wed")
 # newlist1.reverse()
-# print(str(newlist1))
-# print(newlist1.head.value)
-# print(newlist1.head.prev)
-# print(newlist1.tail.value)
-# print(newlist1.tail.next)
-# print(newlist1.length)
+print(str(newlist1))
+print(newlist1.head.value)
+print(newlist1.head.prev)
+print(newlist1.head.next.value)
+print(newlist1.tail.value)
+print(newlist1.tail.prev.value)
+print(newlist1.tail.next)
+print(newlist1.length)
 
 
 
