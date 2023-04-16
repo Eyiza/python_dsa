@@ -51,6 +51,7 @@ class Stack():
 def test():
     myStack = Stack(2)
     myStack.push(1)
+    myStack.printStack()
 
     # (2) Items - Returns '1' Node
     if myStack.length != 0:

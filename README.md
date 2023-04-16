@@ -7,6 +7,8 @@ This repository contains implementations of various data structures and algorith
 - Stack
 - Queue
 - Tree
+- Graph
+- Hash Tables
 
 ## Algorithms
 - Breadth-First Search (BFS)
