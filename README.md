@@ -16,6 +16,7 @@ This repository contains implementations of various data structures and algorith
 - Depth-First Search (DFS)
 - QuickSort
 - MergeSort
+- BubbleSort
 
 ## Usage
 To run the code, simply clone the repository and run the desired file in your Python environment.
