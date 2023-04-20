@@ -81,16 +81,16 @@ class BST:
         return currentNode.value
 
     # Deleting a node
-    def deleteNode(root, key):
+    def deleteNode(self, root, key):
         # Return if the tree is empty
         if root is None:
             return root
 
         # Find the node to be deleted
         if key < root.key:
-            root.left = deleteNode(root.left, key)
+            root.left = self.deleteNode(root.left, key)
         elif(key > root.key):
-            root.right = deleteNode(root.right, key)
+            root.right = self.deleteNode(root.right, key)
         else:
             # If the node is with only one child or no child
             if root.left is None:
@@ -105,12 +105,12 @@ class BST:
 
             # If the node has two children,
             # place the inorder successor in position of the node to be deleted
-            temp = minValueNode(root.right)
+            temp = self.minValueNode(root.right)
 
             root.key = temp.key
 
             # Delete the inorder successor
-            root.right = deleteNode(root.right, temp.key)
+            root.right = self.deleteNode(root.right, temp.key)
         return root
     
     # To print
@@ -133,12 +133,28 @@ class BST:
         # Return a string representation of the root node and its subtrees
         return 'root: ' + str(self.root.value) + ' ' + lefts + ' ' + rights    
 
+    def print_tree(self):
+        def print_tree_helper(curr_node, depth=0, is_left=None):
+            if curr_node is not None:
+                print_tree_helper(curr_node.right, depth=depth+1, is_left=False)
+                if is_left is None:
+                    prefix = ""
+                elif is_left:
+                    prefix = "├── "
+                else:
+                    prefix = "└── "
+                print("    "*depth + prefix + f"({curr_node.value})")
+                print_tree_helper(curr_node.left, depth=depth+1, is_left=True)
+        
+        print_tree_helper(self.root)
+
 
 newTree = BST(45)
 newTree.insert(40)
 newTree.insert(89)
 newTree.insert(32)
-print(newTree)
+# print(newTree)
+newTree.print_tree()
 # print(newTree.contains(45))
 # print(newTree.contains(30))
 # print(newTree.minValueNode(newTree.root.right))
