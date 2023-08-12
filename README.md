@@ -6,17 +6,20 @@ This repository contains implementations of various data structures and algorith
 - Linked Lists
 - Stack
 - Queue
-- Recursion
 - Tree
-- Graph
 - Hash Tables
+- Graph
 
 ## Algorithms
+- Recursion
+- BubbleSort
+- SelectionSort
+- InsertionSort
+- MergeSort
+- QuickSort
 - Breadth-First Search (BFS)
 - Depth-First Search (DFS)
-- QuickSort
-- MergeSort
-- BubbleSort
+
 
 ## Usage
 To run the code, simply clone the repository and run the desired file in your Python environment.
